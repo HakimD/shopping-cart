@@ -5,8 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressHbs = require('express-handlebars');
+
 var mongoose = require('mongoose');
+
 var routes = require('./routes/index');
+
 
 var app = express();
 mongoose.connect('mongodb://localhost:27017/shopping', {useNewUrlParser: true } )
@@ -23,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
